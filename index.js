@@ -46,7 +46,7 @@ client.on('message', async message => { // for non prefix commands\
 
     if(message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    if(selfID === config.ProductionBranchID && message.guild.member(config.BetaBranchID).presence.status ==! "offline")
+    if(selfID === config.ProductionBranchID && message.guild.member(config.BetaBranchID).presence.status != "offline")
     {
       console.log("Beta branch is online.\nIgnoring message...")
       return;
