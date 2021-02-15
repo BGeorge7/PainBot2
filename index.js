@@ -1,5 +1,7 @@
 require('module-alias/register');
 
+const { MongoClient } = require('mongodb').MongoClient;
+const MongoDBProvider = require('commando-provider-mongo');
 const path = require('path');
 const Commando = require('discord.js-commando');
 

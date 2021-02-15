@@ -5,9 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "@discordjs/opus": "github:discordjs/opus",
+    "commando-provider-mongo": "^2.0.2",
     "discord.js": "^12.5.1",
     "discord.js-commando": "git+https://github.com/discordjs/commando.git",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "mongodb": "^3.6.3"
   },
   "devDependencies": {},
   "scripts": {
