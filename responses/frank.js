@@ -6,6 +6,6 @@ module.exports = {
 
     run: async function(message)
     {
-        message.reply("https://cdn.discordapp.com/attachments/282293407181832195/792556558671675392/video0.mp4")
+        message.reply("https://thankschamp.s3.us-east-2.amazonaws.com/video0.mp4")
     }
 }
