@@ -1,5 +1,24 @@
 {
     "Servers": [
-        
+        {
+            "ServerID": "282293407181832195",
+            "Users": [
+                {
+                    "UserID": "142756402912428032",
+                    "Balance": 0,
+                    "lastDailyEpoch": "1",
+                    "GameStates": [
+                        {
+                            "Name": "coin_flip",
+                            "isGameInProgress": 0,
+                            "state": 0,
+                            "stateOneInfo": 0,
+                            "stateTwoInfo": 0,
+                            "stateThreeInfo": 0
+                        }
+                    ]
+                }
+            ]
+        }
     ]
 }

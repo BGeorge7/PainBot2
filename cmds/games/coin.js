@@ -1,4 +1,6 @@
 const Commando = require('discord.js-commando');
+const Discord  = require('discord.js');
+
 let fs = require("fs");
 let path = require("path");
 let reqPath = path.join(__dirname, '../../'); //get directory path of root folder for the bot
@@ -50,16 +52,8 @@ module.exports = class CoinCommand extends Commando.Command {
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].isGameInProgress = 1;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state = 1;
 
-                if(genNum == 0)
-                {
-                    message.reply("You got tails!");
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo = 0;
-                }
-                else
-                {
-                    message.reply("You got heads!");
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo = 1;
-                }
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo = genNum
+                message.channel.send(createEmbed(genNum, userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo, -1, -1))
 
                 let data = JSON.stringify(userStates, null, 4);
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
@@ -67,46 +61,25 @@ module.exports = class CoinCommand extends Commando.Command {
             else if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state == 1)
             {
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state = 2;
-                if(genNum == 0)
-                {
-                    message.reply("You got tails!" + 
-                    "\nYour first roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo == 0) ? "tails!":"heads!"));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo = 0;
-                }
-                else
-                {
-                    message.reply("You got heads!"+ 
-                    "\nYour first roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo == 0) ? "tails!":"heads!"));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo = 1;
-                }
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo = genNum
+                message.channel.send(createEmbed(genNum, userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo, 
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo, -1))
+                
                 let data = JSON.stringify(userStates, null, 4);
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
             }
             else if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state == 2)
             {
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state = 3;
-                if(genNum == 0)
-                {
-                    message.reply("You got tails!" + 
-                    "\nYour first roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo == 0) ? "tails!":"heads!") +
-                    "\nYour second roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo == 0) ? "tails!":"heads!"));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateThreeInfo = 0;
-                }
-                else
-                {
-                    message.reply("You got tails!" + 
-                    "\nYour first roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo == 0) ? "tails!":"heads!") +
-                    "\nYour second roll you got " + ((userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo == 0) ? "tails!":"heads!"));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateThreeInfo = 0;
-                }
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateThreeInfo = genNum
+                message.channel.send(createEmbed(genNum, userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo, 
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo, 
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateThreeInfo))
 
-                message.reply("Three coins fliped!\nThanks for playing");
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].isGameInProgress = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state = 0;
-
-
 
                 let data = JSON.stringify(userStates, null, 4);
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
@@ -151,4 +124,51 @@ function createCoin(userLoc)
     fs.writeFileSync(reqPath + '/info/userStates.json', data);
 
     return nextGame;
+}
+
+function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
+{
+    let embed
+    if(flipOne >=0 && flipTwo < 0 && flipThree < 0)
+    {
+        embed = new Discord.MessageEmbed()
+            .setColor('#00FF00')
+            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .addFields(
+                { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
+            )
+            .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
+            .setTimestamp();
+    }
+    else if(flipOne >=0 && flipTwo >=0 && flipThree < 0)
+    {
+        
+        embed = new Discord.MessageEmbed()
+            .setColor('#00FF00')
+            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .addFields(
+                { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
+                { name: 'Flip 2', value: (flipTwo == 0) ? 'Tails':'Heads' },
+            )
+            .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
+            .setTimestamp();
+    }
+    else if(flipOne >=0 && flipTwo >=0 && flipThree >= 0)
+    {
+        embed = new Discord.MessageEmbed()
+            .setColor('#00FF00')
+            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setDescription('Thanks for playing!\n Here are your flips.')
+            .addFields(
+                { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
+                { name: 'Flip 2', value: (flipTwo == 0) ? 'Tails':'Heads' },
+                { name: 'Flip 2', value: (flipThree == 0) ? 'Tails':'Heads' },
+            )
+            .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
+            .setTimestamp();
+    }
+    return embed;
 }

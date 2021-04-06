@@ -1,5 +1,4 @@
-//User 1 and Server 1 are templates with which all otherss can be created
-//if we add more in the future it will be fun to fix. Its fiiiiiiiiinnnnneee
+//User 1 and Server 1 are templates with which all others can be created
 let path = require("path");
 let reqPath = path.join(__dirname, '../'); //get directory path of root folder for the bot
 let fs = require("fs");
@@ -10,6 +9,7 @@ let template = {
         {
             "UserID": "00000000000",
             "Balance": 0,
+            "lastDailyEpoch": "1",
             "GameStates": [
                 {
                     "Name": "coin_flip",
