@@ -8,7 +8,7 @@ module.exports = {
     run: async function(message, mainDir)
     {
         const bridgeDir = mainDir + "\\features\\bridge\\";
-        console.log(message.author.username.toString() + " Said the N word (" + message.content + ")");
+        console.log(message.author.username.toString() + " Said(" + message.content + ")");
         message.channel.send('<:FeelsWeirdMan:700131181588643902>');
         pfp = message.author.avatarURL.toString();
         let pfpString = message.author.avatarURL().toString(); //gets the url string
