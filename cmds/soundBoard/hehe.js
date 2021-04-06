@@ -1,37 +1,37 @@
 const Commando = require('discord.js-commando')
 const path = require('path')
 
-module.exports = class kekwCommand extends Commando.Command {
+module.exports = class HeheCumCommand extends Commando.Command {
     constructor(client) {
         super(client,  {
-            name: 'kekw',
-            group: 'memes',
-            memberName: 'kekw',
-            description: ':musical_note: kekw laugh :musical_note: ',
+            name: 'hehe',
+            group: 'soundboard',
+            memberName: 'hehe',
+            description: ':musical_note: Cardi B Laugh :musical_note: ',
         })
     }
 
     async run(message)
     {
         
-        const {voice} = message.member;
+        const {voice} = message.member
         
         if(message.member.voice.channel == null)
         {
             message.reply("You are not in a voice channel.");
             return;
         }
-        message.channel.send(":musical_note: kekw :musical_note:");
+        message.channel.send(":musical_note: hehehehe :musical_note:");
         const connection = await voice.channel.join();
 
-        const dispatcher = connection.play('./effects/KEKW.mp3');
+        const dispatcher = connection.play('./effects/hehe.mp3',{volume: 0.7});
 
         dispatcher.on('start', () =>{
-            console.log('kekw is playing');
+            console.log('hehe is playing');
         });
 
         dispatcher.on('finish', () =>{
-            console.log('kekw is done playing');
+            console.log('hehe is done playing');
             voice.channel.leave();
         });
 

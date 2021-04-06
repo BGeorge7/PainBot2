@@ -8,7 +8,7 @@ module.exports = {
 
     run: async function(message, mainDir) //This is not part of commando I just created this to hanndle non prefix commands.
     {
-        dict = require(mainDir + "\\dict.json")
+        dict = require(mainDir + "\\info\\dict.json")
         bridgeDict = dict.Bridge.Dictionary
 
         text = message.content.toLowerCase();
@@ -27,7 +27,7 @@ module.exports = {
             }
         }
 
-        if(text === 'pain')
+        if(text === 'pain' || text === "steven")
         {
             pain.run(message);
         }

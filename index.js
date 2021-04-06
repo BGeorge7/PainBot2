@@ -25,6 +25,8 @@ client.on('ready', async () => {
       ['misc', 'misc commands'],
       ['moderation', 'moderation commands'],
       ['memes', 'meme commands'],
+      ['soundboard', 'sound board commands'],
+      ['games', 'game commands']
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'cmds')); //importing of the commands folder

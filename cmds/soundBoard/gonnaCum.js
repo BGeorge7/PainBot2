@@ -1,37 +1,37 @@
 const Commando = require('discord.js-commando')
 const path = require('path')
 
-module.exports = class ThiccCommand extends Commando.Command {
+module.exports = class GonnaCumCommand extends Commando.Command {
     constructor(client) {
         super(client,  {
-            name: 'thicc',
-            group: 'memes',
-            memberName: 'thicc',
-            description: ':musical_note: DAMN BOY SHE THICC :musical_note: ',
+            name: 'cum',
+            group: 'soundboard',
+            memberName: 'cum',
+            description: ':musical_note: I\'m gonna cum :musical_note: ',
         })
     }
 
     async run(message)
     {
         
-        const {voice} = message.member;
+        const {voice} = message.member
         
         if(message.member.voice.channel == null)
         {
             message.reply("You are not in a voice channel.");
             return;
         }
-        message.channel.send(":musical_note: THICC :musical_note:");
+        message.channel.send(":musical_note: I\'m cumming :musical_note:");
         const connection = await voice.channel.join();
 
-        const dispatcher = connection.play('./effects/thicc.mp3',{volume: 0.4});
+        const dispatcher = connection.play('./effects/cum.mp3');
 
         dispatcher.on('start', () =>{
-            console.log('Thicc is playing');
+            console.log('Cum is playing');
         });
 
         dispatcher.on('finish', () =>{
-            console.log('Thicc is done playing');
+            console.log('Cum is done playing');
             voice.channel.leave();
         });
 
