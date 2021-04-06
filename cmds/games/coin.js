@@ -5,7 +5,7 @@ let fs = require("fs");
 let path = require("path");
 let reqPath = path.join(__dirname, '../../'); //get directory path of root folder for the bot
 
-const utils = require(reqPath + './/utils/usefulFunctions.js');
+const userStatesInit = require(reqPath + './/utils/userStatesInit.js');
 
 let template = {
     "Name": "coin_flip",
@@ -36,7 +36,7 @@ module.exports = class CoinCommand extends Commando.Command {
 
         if(args[0] == 'x') //This is where the game will be held
         {
-            let userLoc = utils.findUser(message.guild.id, message.member.id);
+            let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
             let coinLoc = findCoin(userLoc)
             if(coinLoc < 0)
             {
@@ -133,7 +133,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
     {
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
@@ -146,7 +146,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
         
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
@@ -159,7 +159,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
     {
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle('You Got ' + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .setDescription('Thanks for playing!\n Here are your flips.')
             .addFields(

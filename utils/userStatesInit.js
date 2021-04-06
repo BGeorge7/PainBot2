@@ -11,14 +11,7 @@ let template = {
             "Balance": 0,
             "lastDailyEpoch": "1",
             "GameStates": [
-                {
-                    "Name": "coin_flip",
-                    "isGameInProgress": 0,
-                    "state": 0,
-                    "stateOneInfo": 0,
-                    "stateTwoInfo": 0,
-                    "stateThreeInfo": 0
-                }
+
             ]
         }
     ]
@@ -84,8 +77,6 @@ function doesUserExist(serverIndex, userID)
 
 function createServer(guildID, userID)
 {
-    console.log("Inside Create Server");
-
     //console.log("Creating entry for server (" + guildID + ") and user (" + userID + ")");
     let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'))
     let nextBlankServer = userStates.Servers.length;
@@ -97,14 +88,13 @@ function createServer(guildID, userID)
     let data = JSON.stringify(userStates, null, 4);
     fs.writeFileSync(reqPath + '/info/userStates.json', data);
 
+    console.log("Server ("+guildID+") and user ("+userID+") has been added");
     return {"guildIndex": nextBlankServer, "userIndex": 0};
 
 }
 
 function createUser(serverIndex, userID)
 {
-    console.log("Inside Create User");
-
     let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'))
     let nextBlankUser = userStates.Servers[serverIndex].Users.length;
 
@@ -114,11 +104,7 @@ function createUser(serverIndex, userID)
     let data = JSON.stringify(userStates, null, 4);
     fs.writeFileSync(reqPath + '/info/userStates.json', data);
 
+    console.log("User ("+userID+") has been added");
     return {"guildIndex": serverIndex, "userIndex": nextBlankUser};
 
-}
-
-function createGameCoin(x)
-{
-        
 }
