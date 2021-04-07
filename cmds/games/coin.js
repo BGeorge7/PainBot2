@@ -78,6 +78,7 @@ module.exports = class CoinCommand extends Commando.Command {
 
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateOneInfo = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateTwoInfo = 0;
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].stateThreeInfo = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].isGameInProgress = 0;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[coinLoc].state = 0;
 
