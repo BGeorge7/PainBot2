@@ -35,7 +35,7 @@ module.exports = class DailyCommand extends Commando.Command {
         }
         else
         {
-            const lastEcpoch = BigInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch) + BigInt(86400);
+            const lastEcpoch = BigInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch) + BigInt(86400000);
             if(lastEcpoch < BigInt(Date.now()))
             {
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += 100;
