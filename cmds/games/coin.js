@@ -227,11 +227,13 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
 
 function createEmbed(currentFlip, betPrize)
 {
-    let amountPrize = ((betPrize > 0 )?"You won ":"You lost ") + ((betPrize > 0 )?betPrize:betPrize*-1) + "!";
-    let title = "You got " + ((currentFlip == 0)?"tails!":"heads!");
+    
+    let color = ((betPrize > 0 )?"#00FF00":"#FF0000"); //set color green or red depending on if you won or lost
+    let amountPrize = ((betPrize > 0 )?"You won ":"You lost ") + ((betPrize > 0 )?betPrize:betPrize*-1) + "!"; //output if you won or lost
+    let title = "You got " + ((currentFlip == 0)?"tails!":"heads!");//output if you won or lost
     let embed;
     embed = new Discord.MessageEmbed()
-            .setColor('#00FF00')
+            .setColor(color)
             .setTitle(title)
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .setDescription(amountPrize)
