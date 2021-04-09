@@ -28,13 +28,63 @@ module.exports = class CoinCommand extends Commando.Command {
 
     async run(message, args)
     {
-        if(args.length > 1)
+        if(args.length > 2)
         {
             message.reply("Too many arguemnts...")
             return;
         }
+        else if(args.length == 2 && (!isNaN(args[0])) && (args[1].toLowerCase() == 't' || args[1].toLowerCase() == 'h'))
+        {
+            let betAmount = args[0];
+            let betValue = args[1].toLowerCase();
+            if(args[0] <= 0) //Make sure the bet is above zero
+            {
+                message.reply("Bet amount must be above 0!");
+                return;
+            }
 
-        if(args[0] == 'x') //This is where the game will be held
+            let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
+            let genNum = Math.floor((Math.random() * 100) + 1);
+            genNum = (genNum <= 50) ? 0 : 1;
+
+            let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
+
+            if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance < betAmount) //make sure that the user has enough funds for the bet
+            {
+                message.reply("Insufficient funds for this bet!");
+                return;
+            }
+
+            if(genNum == 0 && betValue == 't') //t == t
+            {
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance =
+                parseInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance) + parseInt(betAmount); 
+                message.channel.send(createEmbed(genNum, betAmount));
+            }
+            else if(genNum == 1 && betValue == 'h') //h == h
+            {
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance =
+                parseInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance) + parseInt(betAmount); 
+                message.channel.send(createEmbed(genNum, betAmount));
+            }
+            else if(genNum == 0 && betValue == 'h') //t == h
+            {
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance =
+                parseInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance) + parseInt(betAmount*-1); 
+                message.channel.send(createEmbed(genNum, betAmount*-1));
+            }
+            else if(genNum == 1 && betValue == 't')//h == t
+            {
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance =
+                parseInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance) + parseInt(betAmount*-1); 
+                message.channel.send(createEmbed(genNum, betAmount*-1));
+            }
+
+            let data = JSON.stringify(userStates, null, 4);
+            fs.writeFileSync(reqPath + '/info/userStates.json', data);
+
+        }
+        else if(args[0] == 'x' && args.length == 1) //This is where the game will be held
         {
             let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
             let coinLoc = findCoin(userLoc)
@@ -86,14 +136,11 @@ module.exports = class CoinCommand extends Commando.Command {
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
             }
 
-            return;
         }
-
-        let genNum = Math.floor(Math.random() * 2)
-        if(genNum == 0)
-            message.reply("You got tails!");
         else
-            message.reply("You got heads!");
+        {
+            message.reply("Malformed command.\nUsage: coin <bet amount> <t or h>\nSecond function: coin x");
+        }  
 
     }
 }
@@ -129,12 +176,16 @@ function createCoin(userLoc)
 
 function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
 {
-    let embed
+
+    let title = "You Got " + ((currentFlip == 0)?"Tails":"Heads");
+
+    let embed;
     if(flipOne >=0 && flipTwo < 0 && flipThree < 0)
     {
+        
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle(title)
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
@@ -147,7 +198,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
         
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle(title)
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
@@ -160,7 +211,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
     {
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
-            .setTitle("You Got " + (currentFlip == 0) ? 'Tails':'Heads')
+            .setTitle(title)
             .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
             .setDescription('Thanks for playing!\n Here are your flips.')
             .addFields(
@@ -171,5 +222,21 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
             .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
             .setTimestamp();
     }
+    return embed;
+}
+
+function createEmbed(currentFlip, betPrize)
+{
+    let amountPrize = ((betPrize > 0 )?"You won ":"You lost ") + ((betPrize > 0 )?betPrize:betPrize*-1) + "!";
+    let title = "You got " + ((currentFlip == 0)?"tails!":"heads!");
+    let embed;
+    embed = new Discord.MessageEmbed()
+            .setColor('#00FF00')
+            .setTitle(title)
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setDescription(amountPrize)
+            .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
+            .setTimestamp();
+    
     return embed;
 }
