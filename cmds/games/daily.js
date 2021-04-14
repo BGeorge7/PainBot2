@@ -12,7 +12,6 @@ module.exports = class DailyCommand extends Commando.Command {
             group: 'games',
             memberName: 'daily',
             description: 'Gives you your daily points',
-            argsType: 'multiple',
         })
     }
 

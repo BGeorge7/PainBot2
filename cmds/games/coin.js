@@ -43,11 +43,11 @@ module.exports = class CoinCommand extends Commando.Command {
                 return;
             }
 
+            let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
+
             let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
             let genNum = Math.floor((Math.random() * 100) + 1);
             genNum = (genNum <= 50) ? 0 : 1;
-
-            let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
 
             if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance < betAmount) //make sure that the user has enough funds for the bet
             {
