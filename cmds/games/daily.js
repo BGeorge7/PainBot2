@@ -20,23 +20,13 @@ module.exports = class DailyCommand extends Commando.Command {
     {
         let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
 
-        let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
-        
-        // if(args[0] = 'y')
-        // {
-            
-        //     let time = Date.now();
-        //     let date = (time - (time % 86400000));
-        //     message.channel.send(date.toLocaleString('en-GB', { hour12:false } ));
-        //     //message.channel.send(new Date(Date.UTC(c.getFullYear(),c.getMonth(), c.getDate())));
-        //     return;
-        // }
+        let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8')); //open the file
 
         if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch == undefined)
         {
 
             let time = Date.now();
-            let date = (time - (time % 86400000));
+            let date = (time - (time % 86400000)); //takes the current time and rounds it down to the nearsest day. (In epoch format)
 
             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance = 100;
             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch = JSON.stringify(date)
@@ -50,10 +40,10 @@ module.exports = class DailyCommand extends Commando.Command {
         else
         {
             let time = Date.now();
-            let date = (time - (time % 86400000));
+            let date = (time - (time % 86400000)); //takes the current time and rounds it down to the nearsest day. (In epoch format)
 
-            const lastEcpoch = BigInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch) + BigInt(86400000);
-            if(lastEcpoch <= BigInt(date))
+            const lastEcpoch = BigInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch) + BigInt(86400000); //saved date plus 1 day
+            if(lastEcpoch <= BigInt(date)) //compare the two days
             {
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += 100;
                 userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch = JSON.stringify(date)
@@ -69,7 +59,7 @@ module.exports = class DailyCommand extends Commando.Command {
                 let time = Date.now();
                 const lastEcpoch = BigInt(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch) + BigInt(86400000);
 
-                let timeLeft = parseFloat(BigInt(lastEcpoch) - BigInt(time));
+                let timeLeft = parseFloat(BigInt(lastEcpoch) - BigInt(time)); //reset time minus current time.
                 message.reply("Your daily is not ready yet! \n" + (timeLeft/3600000).toPrecision(3) + " Hours left till next daily.");
 
             }

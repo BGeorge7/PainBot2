@@ -47,6 +47,12 @@
                     "Balance": 100,
                     "lastDailyEpoch": "1618444800000",
                     "GameStates": []
+                },
+                {
+                    "UserID": "209331286869934080",
+                    "Balance": 100,
+                    "lastDailyEpoch": "1618358400000",
+                    "GameStates": []
                 }
             ]
         }
