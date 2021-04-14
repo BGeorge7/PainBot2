@@ -10,6 +10,7 @@ let template = {
             "UserID": "00000000000",
             "Balance": 0,
             "lastDailyEpoch": "1",
+            "dailyStreak": 1,
             "GameStates": [
 
             ]
