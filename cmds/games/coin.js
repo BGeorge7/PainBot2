@@ -35,11 +35,11 @@ module.exports = class CoinCommand extends Commando.Command {
         }
         else if(args.length == 2 && (!isNaN(args[0])) && (args[1].toLowerCase() == 't' || args[1].toLowerCase() == 'h'))
         {
-            let betAmount = args[0];
+            let betAmount = Math.floor(args[0]);
             let betValue = args[1].toLowerCase();
-            if(args[0] <= 0) //Make sure the bet is above zero
+            if(betAmount <= 0) //Make sure the bet is above zero
             {
-                message.reply("Bet amount must be above 0!");
+                message.reply("Bet amount must at least 1!");
                 return;
             }
 
