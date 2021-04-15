@@ -29,7 +29,7 @@ module.exports = class DailyCommand extends Commando.Command {
 
             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance = 100;
             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch = JSON.stringify(date)
-            userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 1;
+            userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 2;
 
             message.reply("+100!\nYour new balance is " + userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance)
 
@@ -46,7 +46,7 @@ module.exports = class DailyCommand extends Commando.Command {
             if(lastEcpoch <= BigInt(date)) //compare the two days
             {
                 if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak == undefined) //making sure that the dailyStreak variable exists
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 1;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 2;
                 if(lastEcpoch == BigInt(date)) //if the user IS on a streak
                 {
                     if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak <= 5) //checks if the users streak is less than 5
@@ -73,7 +73,7 @@ module.exports = class DailyCommand extends Commando.Command {
                 }
                 else if(lastEcpoch < BigInt(date)) //if the user is NOT on a streak
                 {
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 1;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].dailyStreak = 2;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += 100;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].lastDailyEpoch = JSON.stringify(date);
                     message.reply("+100!\nYour new balance is " + userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance);
