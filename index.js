@@ -50,11 +50,16 @@ client.on('message', async message => { // for non prefix commands\
 
     if(message.content.startsWith(config.prefix) || message.author.bot) return;
 
-    if(selfID === config.ProductionBranchID && message.guild.member(config.BetaBranchID).presence.status != "offline")
-    {
-      console.log("Beta branch is online.\nIgnoring message...")
-      return;
+    try {
+      if(selfID === config.ProductionBranchID && message.guild.member(config.BetaBranchID).presence.status != "offline")
+      {
+        console.log("Beta branch is online.\nIgnoring message...")
+        return;
+      }
+    } catch (error) {
+      console.log("Exception caught: Beta branch not on this server");
     }
+   
 
     //console.log(client.users.cache.get(config.ProductionBranchID).presence.status); //<- This is how you read info on a user that the bot is in a server with
     //console.log(message.guild.member(config.ProductionBranchID).presence.status) // <- this one is only works on the particular guild that the message was sent on
