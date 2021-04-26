@@ -5,7 +5,7 @@
             "Users": [
                 {
                     "UserID": "142756402912428032",
-                    "Balance": 4229,
+                    "Balance": 0,
                     "GameStates": [
                         {
                             "Name": "coin_flip",
@@ -39,15 +39,17 @@
                 },
                 {
                     "UserID": "142752717125844993",
-                    "Balance": 100,
-                    "lastDailyEpoch": "1618413866928",
-                    "GameStates": []
+                    "Balance": 1600000,
+                    "lastDailyEpoch": "1619049600000",
+                    "GameStates": [],
+                    "dailyStreak": 2
                 },
                 {
                     "UserID": "199946670559985664",
-                    "Balance": 100,
-                    "lastDailyEpoch": "1618444800000",
-                    "GameStates": []
+                    "Balance": 4000000,
+                    "lastDailyEpoch": "1619049600000",
+                    "GameStates": [],
+                    "dailyStreak": 2
                 },
                 {
                     "UserID": "209331286869934080",

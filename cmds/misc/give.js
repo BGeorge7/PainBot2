@@ -5,13 +5,13 @@ let fs = require("fs");
 
 const userStatesInit = require(reqPath + './/utils/userStatesInit.js');
 
-module.exports = class AddBal extends Commando.Command {
+module.exports = class Give extends Commando.Command {
     constructor(client) {
         super(client,  {
-            name: 'addbal',
-            group: 'moderation',
-            memberName: 'addbal',
-            description: 'adds balance to a user.',
+            name: 'give',
+            group: 'misc',
+            memberName: 'give',
+            description: 'Lets users trade currency.',
             argsType: 'multiple',
             argsPromptLimit: 0,
             args: [
@@ -31,24 +31,32 @@ module.exports = class AddBal extends Commando.Command {
 
     async run(message, { user, bal })
     {
-        if(message.member.id != "142756402912428032")
+        if(bal <= 0)
         {
-            message.channel.send(`${bal} added to user **${user}**!`);
-            const { promisify } = require('util')
-            const sleep = promisify(setTimeout)
-
-            sleep(4000).then(() => {
-                message.reply("https://thankschamp.s3.us-east-2.amazonaws.com/sike.png");
-              })
+            message.reply("Please enter an amount greater than 0");
             return;
         }
-        console.log("Owner added " + bal + " to user " + user.id)
+        if(message.member.id == user.id)
+        {
+            message.reply("You tried.");
+            return;
+        }
 
-        let userLoc = userStatesInit.findUser(message.guild.id, user.id);
+        let userGiver = userStatesInit.findUser(message.guild.id, message.member.id)
+        let userReceiver = userStatesInit.findUser(message.guild.id, user.id);
 
         let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8')); //open the file
         
-        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += bal;
+        if(userStates.Servers[userGiver.guildIndex].Users[userGiver.userIndex].Balance-bal < 0 )
+        {
+            message.reply("Error insufficient funds.");
+            return;
+        }
+        else
+        {
+            userStates.Servers[userReceiver.guildIndex].Users[userReceiver.userIndex].Balance += bal;
+            userStates.Servers[userGiver.guildIndex].Users[userGiver.userIndex].Balance -= bal;
+        }
 
         let data = JSON.stringify(userStates, null, 4);
         fs.writeFileSync(reqPath + '/info/userStates.json', data);
@@ -56,11 +64,4 @@ module.exports = class AddBal extends Commando.Command {
         message.channel.send(`${bal} added to user **${user}**!`);
 
     }
-
-    
-}
-
-function sike(message)
-{
-    
 }
