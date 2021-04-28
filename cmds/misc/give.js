@@ -5,7 +5,7 @@ let fs = require("fs");
 
 const userStatesInit = require(reqPath + './/utils/userStatesInit.js');
 
-module.exports = class Give extends Commando.Command {
+module.exports = class GiveCommand extends Commando.Command {
     constructor(client) {
         super(client,  {
             name: 'give',

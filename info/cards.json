@@ -1,0 +1,69 @@
+{
+    "Cards":
+    [
+        {"Symbol": "A", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:heartsA_icon:836435104385204274>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/heartsA_icon.png"},
+        {"Symbol": "A", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamondsA_icon:836435104385204324>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamondsA_icon.png"},
+        {"Symbol": "A", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spadeA_icon:836435104465027083>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spadeA_icon.png"},
+        {"Symbol": "A", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubsA_icon:836435104146522113>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubsA_icon.png"},
+        
+        {"Symbol": "2", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts2_icon:836435104368427028>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts2_icon.png"},
+        {"Symbol": "2", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds2_icon:836435104414564392>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds2_icon.png"},
+        {"Symbol": "2", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade2_icon:836435104461094962>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade2_icon.png"},
+        {"Symbol": "2", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs2_icon:836435104309051432>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs2_icon.png"},
+        
+        {"Symbol": "3", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts3_icon:836435104384548905>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts3_icon.png"},
+        {"Symbol": "3", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds3_icon:836435104024756246>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds3_icon.png"},
+        {"Symbol": "3", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade3_icon:836435104423215134>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade3_icon.png"},
+        {"Symbol": "3", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs3_icon:836435104356106280>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs3_icon.png"},
+        
+        {"Symbol": "4", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts4_icon:836435104372883466>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts4_icon.png"},
+        {"Symbol": "4", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds4_icon:836435104380223538>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds4_icon.png"},
+        {"Symbol": "4", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade4_icon:836435104452050984>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade4_icon.png"},
+        {"Symbol": "4", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs4_icon:836435104397000724>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs4_icon.png"},
+        
+        {"Symbol": "5", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts5_icon:836435104238403665>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts5_icon.png"},
+        {"Symbol": "5", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds5_icon:836435104330154014>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds5_icon.png"},
+        {"Symbol": "5", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade5_icon:836435104578535454>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade5_icon.png"},
+        {"Symbol": "5", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs5_icon:836435104128565260>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs5_icon.png"},
+        
+        {"Symbol": "6", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts6_icon:836435104376291349>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts6_icon.png"},
+        {"Symbol": "6", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds6_icon:836435104007585834>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds6_icon.png"},
+        {"Symbol": "6", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade6_icon:836435104456900629>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade6_icon.png"},
+        {"Symbol": "6", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs6_icon:836435104284803132>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs6_icon.png"},
+        
+        {"Symbol": "7", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts7_icon:836435104536068136>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts7_icon.png"},
+        {"Symbol": "7", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds7_icon:836435104069976065>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds7_icon.png"},
+        {"Symbol": "7", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade7_icon:836435104628605008>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade7_icon.png"},
+        {"Symbol": "7", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs7_icon:836435104330022912>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs7_icon.png"},
+        
+        {"Symbol": "8", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts8_icon:836435104406175775>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts8_icon.png"},
+        {"Symbol": "8", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds8_icon:836435104342605855>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds8_icon.png"},
+        {"Symbol": "8", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade8_icon:836435104452444210>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade8_icon.png"},
+        {"Symbol": "8", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs8_icon:836435104380616724>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs8_icon.png"},
+        
+        {"Symbol": "9", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts9_icon:836435104107593759>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts9_icon.png"},
+        {"Symbol": "9", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds9_icon:836435104331071538>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds9_icon.png"},
+        {"Symbol": "9", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade9_icon:836435104229359660>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade9_icon.png"},
+        {"Symbol": "9", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs9_icon:836435104309706752>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs9_icon.png"},
+        
+        {"Symbol": "10", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:hearts10_icon:836435104376684544>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/hearts10_icon.png"},
+        {"Symbol": "10", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamonds10_icon:836435104292143185>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamonds10_icon.png"},
+        {"Symbol": "10", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spade10_icon:836435104410632232>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spade10_icon.png"},
+        {"Symbol": "10", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubs10_icon:836435104313769986>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubs10_icon.png"},
+        
+        {"Symbol": "J", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:heartsJ_icon:836435104175489047>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/heartsJ_icon.png"},
+        {"Symbol": "J", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamondsJ_icon:836435104355057664>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamondsJ_icon.png"},
+        {"Symbol": "J", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spadeJ_icon:836435196890054686>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spadeJ_icon.png"},
+        {"Symbol": "J", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubsJ_icon:836435104367902730>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubsJ_icon.png"},
+        
+        {"Symbol": "Q", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:heartsQ_icon:836435104154517506>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/heartsQ_icon.png"},
+        {"Symbol": "Q", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamondsQ_icon:836435104367640676>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamondsQ_icon.png"},
+        {"Symbol": "Q", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spadeQ_icon:836435196944318504>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spadeQ_icon.png"},
+        {"Symbol": "Q", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubsQ_icon:836435104339329024>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubsQ_icon.png"},
+        
+        {"Symbol": "K", "Suit": "Hearts", "SuitEmoji": "♥", "CardEmoji": "<:heartsK_icon:836435104367640677>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/heartsK_icon.png"},
+        {"Symbol": "K", "Suit": "Diamonds", "SuitEmoji": "♦", "CardEmoji": "<:diamondsK_icon:836435104410763264>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/diamondsK_icon.png"},
+        {"Symbol": "K", "Suit": "Spades", "SuitEmoji": "♠", "CardEmoji": "<:spadeK_icon:836435196722151446>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/spadeK_icon.png"},
+        {"Symbol": "K", "Suit": "Clubs", "SuitEmoji": "♣", "CardEmoji": "<:clubsK_icon:836435104036814871>", "CardURL": "https://thankschamp.s3.us-east-2.amazonaws.com/play_cards/small_cards/clubsK_icon.png"}
+    ]
+}

@@ -26,6 +26,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
             memberName: 'blackjack',
             description: 'Plays Black Jack',
             argsPromptLimit: 0,
+            aliases: ['blackjack', 'bj'],
             args: [
                 {
                     key: 'text',
@@ -54,7 +55,8 @@ module.exports = class BlackJackCommand extends Commando.Command {
         }
         else
         {
-            if(text == "bet" && bal) //block for the start of a game
+            
+            if(text.toLowerCase() == "bet" && bal) //block for the start of a game
             {
                 let betAmount = Math.floor(bal)
                 if(betAmount <= 0) //Make sure the bet is above zero
@@ -125,7 +127,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
 
                     message.channel.send({embed: embedDisplay});
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0
 
                     let data = JSON.stringify(userStates, null, 4);
                     fs.writeFileSync(reqPath + '/info/userStates.json', data);
@@ -154,7 +156,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
                 return;
             }
-            else if(text == "hit")
+            else if(text.toLowerCase() == "hit")
             {
                 let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
                 let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
@@ -241,9 +243,9 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
-                            "win", message.member.user.username + " Wins with a " + userTotal + "!", false);
+                            "win", message.member.user.username + " wins with a " + userTotal + "!", false);
                         message.channel.send({embed: embedDisplay});
-                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5;
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                         let data = JSON.stringify(userStates, null, 4);
@@ -257,9 +259,9 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
-                            "win", message.member.user.username + " Wins. Dealer busts with a " + dealerTotal + "!", false);
+                            "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
                         message.channel.send({embed: embedDisplay});
-                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5;
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                         let data = JSON.stringify(userStates, null, 4);
@@ -273,7 +275,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                 fs.writeFileSync(reqPath + '/info/userStates.json', data);
 
             }
-            else if(text == "stay")
+            else if(text.toLowerCase() == "stay")
             {
                 let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
                 let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
@@ -300,9 +302,9 @@ module.exports = class BlackJackCommand extends Commando.Command {
                     embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
-                        "win", message.member.user.username + " Wins. Dealer busts with a " + dealerTotal + "!", false);
+                        "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -332,9 +334,9 @@ module.exports = class BlackJackCommand extends Commando.Command {
                     embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
-                        "win", message.member.user.username + " Wins with a " + userTotal + "!", false);
+                        "win", message.member.user.username + " wins with a " + userTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -350,7 +352,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "lose", "Dealer wins with a " + dealerTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.5;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -359,8 +361,127 @@ module.exports = class BlackJackCommand extends Commando.Command {
                 }
 
             }
+            else if(text.toLowerCase() == "double")
+            {
+                let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
+                let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
 
+                let blackJackLoc = findBlackJack(userLoc);
+                userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8')); //reopens the file now that the new blackjack game state has been added
+                let betAmount = userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount;
+
+                if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance < betAmount) //make sure that the user has enough funds for the bet
+                {
+                    message.reply("Insufficient funds for this bet!");
+                    return;
+                }
+
+                //let blackJackLoc = findBlackJack(userLoc);
+                
+                if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].isGameInProgress != 1) //make sure the game is in progress
+                {
+                    message.reply("No game currently in progress\n" + '```Command: -blackjack bet <bet amount>```');
+                    return;
+                }
+
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance -= userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount;
+                userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount *= 2;
+                betAmount = userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount; //record the double down
+
+                blackJackUtils.userHit(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck, //user Hits once
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].gameDeck);
+
+
+                let embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                    "playing", message.member.user.username + " is playing blackjack!", true)    
             
+                message.channel.send({embed: embedDisplay}); //send the current hands
+                
+                let userTotal = blackJackUtils.handTotal(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck);
+
+                if(userTotal > 21) //user bust
+                {
+                    embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                        "lose", message.member.user.username + " busted with a " + userTotal +"!" , false);
+                        
+                    message.channel.send({embed: embedDisplay});
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template)); //game reset
+                    let data = JSON.stringify(userStates, null, 4);
+                    fs.writeFileSync(reqPath + '/info/userStates.json', data);
+                    return;
+                }
+
+                blackJackUtils.dealerHit(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck, //dealers hits
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].gameDeck, 
+                    blackJackUtils.handTotal(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck));
+                let dealerTotal = blackJackUtils.handTotal(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck);
+                
+                if(dealerTotal > 21) //dealer bust
+                {
+                    embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                        "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
+                    message.channel.send({embed: embedDisplay});
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
+
+                    let data = JSON.stringify(userStates, null, 4);
+                    fs.writeFileSync(reqPath + '/info/userStates.json', data);
+                    return;
+                }
+                else if(userTotal == dealerTotal) //dealer tied
+                {
+                    embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                        "playing", message.member.user.username + " tied with the dealer!", false);
+                        
+                    message.channel.send({embed: embedDisplay});
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template)); //game reset
+
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount;
+
+                    let data = JSON.stringify(userStates, null, 4);
+                    fs.writeFileSync(reqPath + '/info/userStates.json', data);
+                    return;
+                }
+                else if(userTotal > dealerTotal) //User wins
+                {
+                    embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                        "win", message.member.user.username + " wins with a " + userTotal + "!", false);
+                    message.channel.send({embed: embedDisplay});
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
+
+                    let data = JSON.stringify(userStates, null, 4);
+                    fs.writeFileSync(reqPath + '/info/userStates.json', data);
+                    return;
+                }
+                else if(dealerTotal > userTotal) //dealer wins
+                {
+                    embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                        "lose", "Dealer wins with a " + dealerTotal + "!", false);
+                    message.channel.send({embed: embedDisplay});
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
+
+                    let data = JSON.stringify(userStates, null, 4);
+                    fs.writeFileSync(reqPath + '/info/userStates.json', data);
+                    return;
+                }
+            }
+            else
+            {
+                message.reply("To start playing\n-blackjack bet <bet amount>");
+            }
         }
         
     }
@@ -393,94 +514,4 @@ function createBlackJack(userLoc)//if the game state does not exist, creates a b
     fs.writeFileSync(reqPath + '/info/userStates.json', data);
 
     return nextGame;
-}
-
-function embedsShit()
-{
-    let exampleEmbed = {
-        color: 0x0099ff,
-        title: 'BlackJack!',
-        thumbnail: {
-            url: 'https://thankschamp.s3.us-east-2.amazonaws.com/blackjacklogo.png',
-        },
-        author: {
-            name: 'Pain Bot',
-            icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
-            url: 'https://www.google.com',
-        },
-        description: 'Your wager: 500',
-        fields:[
-            {
-                name: 'Your Hand!',
-                value: cardsFile.Cards[3].SuitEmoji + cardsFile.Cards[3].Symbol + "\t" + cardsFile.Cards[29].SuitEmoji + cardsFile.Cards[29].Symbol+ "\t" + cardsFile.Cards[48].SuitEmoji + cardsFile.Cards[48].Symbol + "\t" + cardsFile.Cards[19].SuitEmoji + cardsFile.Cards[19].Symbol +
-                "\n" + "Hand Value: **19**",
-                inline: true,
-            },
-            {
-                name: '\u200B',
-                value: '\u200B',
-                inline: true
-            },
-            {
-                name: 'Dealer Hand!',
-                value:  cardsFile.Cards[37].SuitEmoji + cardsFile.Cards[37].Symbol + "\t" + cardsFile.Cards[1].SuitEmoji + cardsFile.Cards[1].Symbol +
-                "\n" + "Hand Value: **19**",
-                inline: true,
-            },
-            {
-                name: '\u200B',
-                value: '```Command: -blackjack [hit | stand | double]```'
-            }
-            
-        ],
-        timestamp: new Date(),
-    };
-
-    message.channel.send({embed: exampleEmbed });
-
-    //message.channel.send(embed );
-
-    exampleEmbed = {
-        color: 0x0099ff,
-        title: 'Hit!',
-        author: {
-            name: 'Pain Bot',
-            icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
-            url: 'https://www.google.com',
-        },
-        description: 'Your wager: 500',
-        thumbnail: {
-            url: 'https://thankschamp.s3.us-east-2.amazonaws.com/blackjacklogo.png',
-        },
-        fields:[
-            {
-                name: 'Your Hand!',
-                value: cardsFile.Cards[3].SuitEmoji + cardsFile.Cards[3].Symbol + "\t" + cardsFile.Cards[29].SuitEmoji + cardsFile.Cards[29].Symbol+ "\t" + cardsFile.Cards[48].SuitEmoji + cardsFile.Cards[48].Symbol + "\t" + cardsFile.Cards[19].SuitEmoji + cardsFile.Cards[19].Symbol +
-                "\n" + "Hand Value: **19**",
-                inline: true,
-            },
-            {
-                name: '\u200B',
-                value: '\u200B',
-                inline: true
-            },
-            {
-                name: 'Dealer Hand!',
-                value:  cardsFile.Cards[37].SuitEmoji + cardsFile.Cards[37].Symbol + "\t" + cardsFile.Cards[1].SuitEmoji + cardsFile.Cards[1].Symbol +
-                "\n" + "Hand Value: **19**",
-                inline: true,
-            },
-            {
-                name: '\u200B',
-                value: '```Command: -blackjack [hit | stand | double]```'
-            }
-            
-        ],
-        image: {
-            url: cardsFile.Cards[37].CardURL,
-        },
-        timestamp: new Date(),
-    };
-
-    message.channel.send({embed: exampleEmbed });
 }

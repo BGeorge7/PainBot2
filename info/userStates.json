@@ -5,19 +5,19 @@
             "Users": [
                 {
                     "UserID": "142756402912428032",
-                    "Balance": 0,
+                    "Balance": 1520,
                     "GameStates": [
                         {
-                            "Name": "coin_flip",
+                            "Name": "black_jack",
                             "isGameInProgress": 0,
-                            "state": 0,
-                            "stateOneInfo": 0,
-                            "stateTwoInfo": 0,
-                            "stateThreeInfo": 0
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
                         }
                     ],
-                    "lastDailyEpoch": "1618358400000",
-                    "dailyStreak": 1
+                    "lastDailyEpoch": "1619568000000",
+                    "dailyStreak": 3
                 },
                 {
                     "UserID": "154443230912577537",
@@ -39,16 +39,34 @@
                 },
                 {
                     "UserID": "142752717125844993",
-                    "Balance": 1600000,
-                    "lastDailyEpoch": "1619049600000",
-                    "GameStates": [],
-                    "dailyStreak": 2
+                    "Balance": 602978915286,
+                    "lastDailyEpoch": "1619568000000",
+                    "GameStates": [
+                        {
+                            "Name": "black_jack",
+                            "isGameInProgress": 0,
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
+                        }
+                    ],
+                    "dailyStreak": 3
                 },
                 {
                     "UserID": "199946670559985664",
-                    "Balance": 4000000,
+                    "Balance": 165114576585,
                     "lastDailyEpoch": "1619049600000",
-                    "GameStates": [],
+                    "GameStates": [
+                        {
+                            "Name": "black_jack",
+                            "isGameInProgress": 0,
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
+                        }
+                    ],
                     "dailyStreak": 2
                 },
                 {
@@ -56,6 +74,54 @@
                     "Balance": 100,
                     "lastDailyEpoch": "1618358400000",
                     "GameStates": []
+                },
+                {
+                    "UserID": "611930613011841024",
+                    "Balance": 4954850,
+                    "lastDailyEpoch": "1619568000000",
+                    "dailyStreak": 3,
+                    "GameStates": [
+                        {
+                            "Name": "black_jack",
+                            "isGameInProgress": 0,
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
+                        }
+                    ]
+                },
+                {
+                    "UserID": "177578074387382272",
+                    "Balance": 9900,
+                    "lastDailyEpoch": "1",
+                    "dailyStreak": 1,
+                    "GameStates": [
+                        {
+                            "Name": "black_jack",
+                            "isGameInProgress": 0,
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
+                        }
+                    ]
+                },
+                {
+                    "UserID": "142803267712188417",
+                    "Balance": 10120,
+                    "lastDailyEpoch": "1619568000000",
+                    "dailyStreak": 2,
+                    "GameStates": [
+                        {
+                            "Name": "black_jack",
+                            "isGameInProgress": 0,
+                            "betAmount": 0,
+                            "userDeck": [],
+                            "dealerDeck": [],
+                            "gameDeck": []
+                        }
+                    ]
                 }
             ]
         }
