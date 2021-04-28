@@ -118,7 +118,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
 
                     return;
                 }
-                else if(userTotal == 21)
+                else if(userTotal == 21) //user wins
                 {   
                     embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
@@ -127,14 +127,14 @@ module.exports = class BlackJackCommand extends Commando.Command {
 
                     message.channel.send({embed: embedDisplay});
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0
 
                     let data = JSON.stringify(userStates, null, 4);
                     fs.writeFileSync(reqPath + '/info/userStates.json', data);
                     return;
                     
                 }
-                else if(dealerTotal == 21)
+                else if(dealerTotal == 21) //dealer wins
                 {
                     embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
@@ -245,7 +245,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                             "win", message.member.user.username + " wins with a " + userTotal + "!", false);
                         message.channel.send({embed: embedDisplay});
-                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                         let data = JSON.stringify(userStates, null, 4);
@@ -261,7 +261,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                             userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                             "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
                         message.channel.send({embed: embedDisplay});
-                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                        userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                         let data = JSON.stringify(userStates, null, 4);
@@ -304,7 +304,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -336,7 +336,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "win", message.member.user.username + " wins with a " + userTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -352,7 +352,6 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "lose", "Dealer wins with a " + dealerTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -427,7 +426,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "win", message.member.user.username + " wins! Dealer busts with a " + dealerTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
@@ -457,7 +456,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
                         userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
                         "win", message.member.user.username + " wins with a " + userTotal + "!", false);
                     message.channel.send({embed: embedDisplay});
-                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 3.0;
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].Balance += betAmount * 2.0;
                     userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc] = JSON.parse(JSON.stringify(template));
 
                     let data = JSON.stringify(userStates, null, 4);
