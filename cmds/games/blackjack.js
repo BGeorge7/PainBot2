@@ -47,11 +47,30 @@ module.exports = class BlackJackCommand extends Commando.Command {
 
     async run(message, {text, bal})
     {
-        
-
         if(!text)
         {
-            message.reply("To start playing\n-blackjack bet <bet amount>");
+            let userLoc = userStatesInit.findUser(message.guild.id, message.member.id);
+            let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
+            let blackJackLoc = findBlackJack(userLoc);
+            userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
+
+            let betAmount = userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount
+
+            if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].isGameInProgress == 1)
+            {
+                
+                let embedDisplay = blackJackUtils.formEmbed(betAmount,  //Display the Hand
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].userDeck,
+                    userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].dealerDeck,
+                    "playing", message.member.user.username + " is playing blackjack!", false)    
+               
+                message.channel.send({embed: embedDisplay}); //send the current hands
+            }
+            else
+            {
+                message.reply("To start playing\n-blackjack bet <bet amount>");
+            }
+            
         }
         else
         {
@@ -163,7 +182,7 @@ module.exports = class BlackJackCommand extends Commando.Command {
 
                 let blackJackLoc = findBlackJack(userLoc);
                 userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8')); //reopens the file now that the new blackjack game state has been added
-                let betAmount = userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount
+                let betAmount = userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].betAmount;
                 if(userStates.Servers[userLoc.guildIndex].Users[userLoc.userIndex].GameStates[blackJackLoc].isGameInProgress != 1)
                 {
                     message.reply("No game currently in progress\n" + '```Command: -blackjack bet <bet amount>```');

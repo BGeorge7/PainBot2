@@ -135,7 +135,7 @@ function handTotal(array)
         else
             arrNoAce.push(array[i]);
     }
-    return handTotalHelper(arrNoAce.concat(arrAce)); //helper function
+    return handTotalHelper(arrNoAce.concat(arrAce), arrAce.length); //helper function
 }
 
 function handString(hand)
@@ -149,29 +149,57 @@ function handString(hand)
     return x;
 }
 
-function handTotalHelper(array)
+function handTotalHelper(array, numAces)
 {
     let total = 0;
     let i;
-    for(i = 0; i < array.length; i++)
+    if(numAces <= 1)
     {
-        switch(array[i].Symbol)
+        for(i = 0; i < array.length; i++)
         {
-            case "J":
-            case "Q":
-            case "K":
-                total += 10;
-                break;
-            case "A":
-                if(total+11 > 21)
-                    total += 1;
-                else
-                    total += 11;
-                break;
-            default:
-                total += parseInt(array[i].Symbol);
-                break;
+            switch(array[i].Symbol)
+            {
+                case "J":
+                case "Q":
+                case "K":
+                    total += 10;
+                    break;
+                case "A":
+                    if(total+11 > 21)
+                        total += 1;
+                    else
+                        total += 11;
+                    break;
+                default:
+                    total += parseInt(array[i].Symbol);
+                    break;
+            }
+
         }
+        return total;
     }
-    return total;
+    else
+    {
+        for(i = 0; i < array.length-numAces; i++)
+        {
+            switch(array[i].Symbol)
+            {
+                case "J":
+                case "Q":
+                case "K":
+                    total += 10;
+                    break;
+                default:
+                    total += parseInt(array[i].Symbol);
+                    break;
+            }
+        }
+        let sinOne = total + 11 + numAces-1;
+        let sinTwo = total + numAces;
+        if(sinOne > 21)
+            return sinTwo;
+        else
+            return sinOne;
+    }
+    
 }

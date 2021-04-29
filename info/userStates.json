@@ -5,7 +5,7 @@
             "Users": [
                 {
                     "UserID": "142756402912428032",
-                    "Balance": 1520,
+                    "Balance": 1390,
                     "GameStates": [
                         {
                             "Name": "black_jack",
@@ -55,7 +55,7 @@
                 },
                 {
                     "UserID": "199946670559985664",
-                    "Balance": 165114576585,
+                    "Balance": 0,
                     "lastDailyEpoch": "1619049600000",
                     "GameStates": [
                         {
