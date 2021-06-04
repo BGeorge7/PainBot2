@@ -5,6 +5,9 @@ let fs = require("fs");
 
 let template = {
     "ServerID": "00000000000",
+    "SeverGameStates":[
+
+    ],
     "Users": [
         {
             "UserID": "00000000000",
@@ -22,8 +25,8 @@ module.exports = {
 
     findUser: function(guildID, userID)
     {
+        
         let serverIndex = doesServerExist(guildID);
-        let userIndex;
         if(serverIndex < 0)
         {
             return createServer(guildID, userID);
@@ -42,8 +45,23 @@ module.exports = {
         }
 
     },
+
+    findSever: function(guildID)
+    {
+        let serverIndex = doesServerExist(guildID);
+        if(serverIndex < 0)
+        {
+            return createServer(guildID);
+        }
+        else
+        {
+            return {"guildIndex": serverIndex};
+
+        }
+    }
     
-}//Returns the index of the Server. If the server does not exist returns -1
+}
+//Returns the index of the Server. If the server does not exist returns -1
 function doesServerExist(guildID)
 {
     let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'))
@@ -78,13 +96,18 @@ function doesUserExist(serverIndex, userID)
 
 function createServer(guildID, userID)
 {
-    //console.log("Creating entry for server (" + guildID + ") and user (" + userID + ")");
+    
     let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'))
     let nextBlankServer = userStates.Servers.length;
 
     userStates.Servers.push(template);
     userStates.Servers[nextBlankServer].ServerID = guildID;
-    userStates.Servers[nextBlankServer].Users[0].UserID = userID;
+    
+
+    if(!userID)
+        userStates.Servers[nextBlankServer].Users = [];
+    else
+        userStates.Servers[nextBlankServer].Users[0].UserID = userID;
 
     let data = JSON.stringify(userStates, null, 4);
     fs.writeFileSync(reqPath + '/info/userStates.json', data);

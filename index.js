@@ -1,7 +1,5 @@
 require('module-alias/register');
 
-const { MongoClient } = require('mongodb').MongoClient;
-const MongoDBProvider = require('commando-provider-mongo');
 const path = require('path');
 const Commando = require('discord.js-commando');
 
@@ -42,6 +40,13 @@ client.on('ready', async () => {
     console.log("Running on the production branch")
     client.user.setActivity("Type -help");
   }
+
+  let timerId = setInterval(() => {
+    //console.log("TEST!");
+    //channel = client.channels.cache.get('766432412955181076');
+    //channel.send("HELLO!");
+  }, 5000);
+
 
 });
 
