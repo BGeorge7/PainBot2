@@ -63,7 +63,7 @@ module.exports = class LeaderboardCommand extends Commando.Command {
 
         let serverStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8')); //open the file
 
-        serverStates.Servers[serverLoc.guildIndex].SeverGameStates.push(copy);
+        serverStates.Servers[serverLoc.guildIndex].Reminders.push(copy);
         let data = JSON.stringify(serverStates, null, 4);
         fs.writeFileSync(reqPath + '/info/userStates.json', data);
 

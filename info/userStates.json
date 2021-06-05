@@ -2,18 +2,24 @@
     "Servers": [
         {
             "ServerID": "282293407181832195",
-            "SeverGameStates": [
+            "Reminders": [
                 {
                     "UserID": "142756402912428032",
                     "ChannelID": "766432412955181076",
                     "ReminderTime": 1623295448,
                     "Reminder": "test"
+                },
+                {
+                    "UserID": "142756402912428032",
+                    "ChannelID": "766432412955181076",
+                    "ReminderTime": 1623036791,
+                    "Reminder": "Steven is a bitch ass"
                 }
             ],
             "Users": [
                 {
                     "UserID": "142756402912428032",
-                    "Balance": 100,
+                    "Balance": 400,
                     "lastDailyEpoch": "1622764800000",
                     "dailyStreak": 2,
                     "GameStates": [
@@ -36,8 +42,15 @@
                 },
                 {
                     "UserID": "199946670559985664",
-                    "Balance": 0,
+                    "Balance": 5,
                     "lastDailyEpoch": "1622764800000",
+                    "dailyStreak": 2,
+                    "GameStates": []
+                },
+                {
+                    "UserID": "142752717125844993",
+                    "Balance": 100,
+                    "lastDailyEpoch": "1622851200000",
                     "dailyStreak": 2,
                     "GameStates": []
                 }

@@ -55,16 +55,16 @@ client.on('ready', async () => {
     let info = JSON.parse(fs.readFileSync('.//info/userStates.json', 'utf8')); //open the file
     for(let i = 0;i < info.Servers.length;i++)
     {
-      for(let j = 0;j < info.Servers[i].SeverGameStates.length;j++)
+      for(let j = 0;j < info.Servers[i].Reminders.length;j++)
       {
-        //console.log(`${currentTime >= info.Servers[i].SeverGameStates[j].ReminderTime} Current time ${currentTime} <= My Time: ${info.Servers[i].SeverGameStates[j].ReminderTime}`);
-        if(currentTime >= info.Servers[i].SeverGameStates[j].ReminderTime)
+        //console.log(`${currentTime >= info.Servers[i].Reminders[j].ReminderTime} Current time ${currentTime} <= My Time: ${info.Servers[i].Reminders[j].ReminderTime}`);
+        if(currentTime >= info.Servers[i].Reminders[j].ReminderTime)
         {
-          channel = client.channels.cache.get(info.Servers[i].SeverGameStates[j].ChannelID);
+          channel = client.channels.cache.get(info.Servers[i].Reminders[j].ChannelID);
 
           let embedDisplay = { 
             color: '#264160',
-            title: `Reminder for ${channel.guild.members.cache.get(info.Servers[i].SeverGameStates[j].UserID).user.username}`,
+            title: `Reminder for ${channel.guild.members.cache.get(info.Servers[i].Reminders[j].UserID).user.username}`,
             thumbnail: {
                 url: 'https://thankschamp.s3.us-east-2.amazonaws.com/bell.png',
             },
@@ -73,15 +73,15 @@ client.on('ready', async () => {
                 icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
                 url: 'https://www.google.com',
             },
-            description: `**${info.Servers[i].SeverGameStates[j].Reminder}**`,
+            description: `**${info.Servers[i].Reminders[j].Reminder}**`,
             timestamp: new Date(),
           };
 
-          channel.send(`Hey, ${channel.guild.members.cache.get(info.Servers[i].SeverGameStates[j].UserID)} here is your reminder: `);
+          channel.send(`Hey, ${channel.guild.members.cache.get(info.Servers[i].Reminders[j].UserID)} here is your reminder: `);
           channel.send({embed: embedDisplay});
 
-          info.Servers[i].SeverGameStates = info.Servers[i].SeverGameStates.filter((element) =>{
-            return element.ReminderTime != info.Servers[i].SeverGameStates[j].ReminderTime;
+          info.Servers[i].Reminders = info.Servers[i].Reminders.filter((element) =>{
+            return element.ReminderTime != info.Servers[i].Reminders[j].ReminderTime;
           });
 
           let data = JSON.stringify(info, null, 4);
