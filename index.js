@@ -1,10 +1,14 @@
 require('module-alias/register');
 
+let fs = require("fs");
 const path = require('path');
 const Commando = require('discord.js-commando');
+const Discord  = require('discord.js');
 
 const config = require('./config.json');
 const plainResponses = require("./responses/respond.js");
+
+
 
 let selfID
 
@@ -45,7 +49,47 @@ client.on('ready', async () => {
     //console.log("TEST!");
     //channel = client.channels.cache.get('766432412955181076');
     //channel.send("HELLO!");
-  }, 5000);
+
+    let currentTime = Math.floor(new Date().getTime()/1000.0);
+
+    let info = JSON.parse(fs.readFileSync('.//info/userStates.json', 'utf8')); //open the file
+    for(let i = 0;i < info.Servers.length;i++)
+    {
+      for(let j = 0;j < info.Servers[i].SeverGameStates.length;j++)
+      {
+        //console.log(`${currentTime >= info.Servers[i].SeverGameStates[j].ReminderTime} Current time ${currentTime} <= My Time: ${info.Servers[i].SeverGameStates[j].ReminderTime}`);
+        if(currentTime >= info.Servers[i].SeverGameStates[j].ReminderTime)
+        {
+          channel = client.channels.cache.get(info.Servers[i].SeverGameStates[j].ChannelID);
+
+          let embedDisplay = { 
+            color: '#264160',
+            title: `Reminder for ${channel.guild.members.cache.get(info.Servers[i].SeverGameStates[j].UserID).user.username}`,
+            thumbnail: {
+                url: 'https://thankschamp.s3.us-east-2.amazonaws.com/bell.png',
+            },
+            author: {
+                name: 'Pain Bot',
+                icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
+                url: 'https://www.google.com',
+            },
+            description: `**${info.Servers[i].SeverGameStates[j].Reminder}**`,
+            timestamp: new Date(),
+          };
+
+          channel.send(`Hey, ${channel.guild.members.cache.get(info.Servers[i].SeverGameStates[j].UserID)} here is your reminder: `);
+          channel.send({embed: embedDisplay});
+
+          info.Servers[i].SeverGameStates = info.Servers[i].SeverGameStates.filter((element) =>{
+            return element.ReminderTime != info.Servers[i].SeverGameStates[j].ReminderTime;
+          });
+
+          let data = JSON.stringify(info, null, 4);
+          fs.writeFileSync('.//info/userStates.json', data);
+        }
+      }
+    }
+  }, 800);
 
 
 });

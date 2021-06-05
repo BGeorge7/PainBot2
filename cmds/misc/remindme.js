@@ -88,9 +88,7 @@ module.exports = class LeaderboardCommand extends Commando.Command {
         
         message.reply(`Reminding you in **${time.slice(0,time.length-1)} ${timeText}** to **${reminder}**`);
 
-    }
-
-    
+    } 
     
 }
 //returns the time that the alarm is to go off.
