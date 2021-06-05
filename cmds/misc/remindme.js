@@ -43,13 +43,13 @@ module.exports = class LeaderboardCommand extends Commando.Command {
     {
         let serverLoc = userStatesInit.findSever(message.guild.id);
 
-        const regex = '^([0-9]+[dsym]{1})$'
+        const regex = '^([0-9]+[dsymh]{1})$'
         let regexCheck = time.match(regex);
 
         if(!regexCheck)
         {
             message.channel.send("Incorrect formating\n"+
-            "Command: -rdm <time <number><d,m,y> > <reminder message>\n"+
+            "Command: -rdm <time <number><s,m,h,d,y> > <reminder message>\n"+
             "Example: -rdm 2d check my email");
             return;
         }
@@ -78,6 +78,9 @@ module.exports = class LeaderboardCommand extends Commando.Command {
             case 'm':
                 timeText = "Minute(s)";
                 break;
+            case 'h':
+                timeText = "Hour(s)";
+                break;
             case 'd':
                 timeText = "Day(s)";
                 break;
@@ -102,6 +105,8 @@ function translateTime(time)
             return (1 * num) + currentTime;
         case 'm':
             return (60 * num) + currentTime;
+        case 'h':
+            return (3600 * num) + currentTime;
         case 'd':
             return (86400 * num) + currentTime;
         case 'y':
