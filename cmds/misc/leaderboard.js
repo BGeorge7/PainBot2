@@ -23,6 +23,10 @@ module.exports = class LeaderboardCommand extends Commando.Command {
         let userStates = JSON.parse(fs.readFileSync(reqPath + './/info/userStates.json', 'utf8'));
 
         let allUsers = JSON.parse(JSON.stringify(userStates.Servers[userLoc.guildIndex].Users));
+
+        allUsers = allUsers.filter((element) =>{ //removes vlad because he does not deserve to be on this list.
+            return element.UserID !== '199946670559985664';
+        });
         
         let bubbleSort = (inputArr) => {
             let len = inputArr.length;
@@ -49,9 +53,19 @@ module.exports = class LeaderboardCommand extends Commando.Command {
             author: {
                 name: 'Pain Bot',
                 icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
-                url: 'https://www.google.com',
+                url: 'https://github.com/BGeorge7/PainBot2',
             },
             fields:[
+                {
+                    name: 'User',
+                    value: "",
+                    inline: true
+                },
+                {
+                    name: 'Balance',
+                    value: "",
+                    inline: true
+                },
             ],
             timestamp: new Date(),
         };
@@ -72,26 +86,13 @@ module.exports = class LeaderboardCommand extends Commando.Command {
                     emote = ":third_place: ";
                     break;
                 default:
-                    emote = "**" + (i+1) + ".**";
+                    emote = " **" + (i+1) + ".** ";
             }
 
-            embed.fields.push({
-                name: (i === 0) ? 'User' : '\u200B',
-                value: emote + (message.guild.members.cache.get(allUsers[i].UserID).nickname ? message.guild.members.cache.get(allUsers[i].UserID).nickname : message.guild.members.cache.get(allUsers[i].UserID).user.username),
-                inline: true
-            },
-            {
-                name: (i === 0) ? 'Balance' : '\u200B',
-                value: allUsers[i].Balance + "\t:coin:",
-                inline: true
-            },
-            {
-                name: '\u200B',
-                value: '\u200B',
-                inline: true
-            });
-        }
+            embed.fields[0].value += emote + (message.guild.members.cache.get(allUsers[i].UserID).nickname ? message.guild.members.cache.get(allUsers[i].UserID).nickname : message.guild.members.cache.get(allUsers[i].UserID).user.username) + "\n";
+            embed.fields[1].value += "`" + allUsers[i].Balance + "`" + "\t:coin:" + "\n";
 
+        }
         message.channel.send({embed: embed});
     }
     

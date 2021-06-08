@@ -186,7 +186,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
             .setTitle(title)
-            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://github.com/BGeorge7/PainBot2')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
             )
@@ -199,7 +199,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
             .setTitle(title)
-            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://github.com/BGeorge7/PainBot2')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
                 { name: 'Flip 2', value: (flipTwo == 0) ? 'Tails':'Heads' },
@@ -212,7 +212,7 @@ function createEmbed(currentFlip, flipOne, flipTwo, flipThree)
         embed = new Discord.MessageEmbed()
             .setColor('#00FF00')
             .setTitle(title)
-            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://github.com/BGeorge7/PainBot2')
             .setDescription('Thanks for playing!\n Here are your flips.')
             .addFields(
                 { name: 'Flip 1', value: (flipOne == 0) ? 'Tails':'Heads' },
@@ -235,7 +235,7 @@ function createEmbed(currentFlip, betPrize)
     embed = new Discord.MessageEmbed()
             .setColor(color)
             .setTitle(title)
-            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://www.google.com')
+            .setAuthor('Pain Bot', 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png', 'https://github.com/BGeorge7/PainBot2')
             .setDescription(amountPrize)
             .setImage((currentFlip == 0)? 'https://thankschamp.s3.us-east-2.amazonaws.com/tails.png':'https://thankschamp.s3.us-east-2.amazonaws.com/Heads.png')
             .setTimestamp();

@@ -80,7 +80,7 @@ module.exports = {
             author: {
                 name: 'Pain Bot',
                 icon_url: 'https://thankschamp.s3.us-east-2.amazonaws.com/PainChamp.png',
-                url: 'https://www.google.com',
+                url: 'https://github.com/BGeorge7/PainBot2',
             },
             description: 'Your wager: **' + wager + '**',
             fields:[
