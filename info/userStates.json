@@ -2,14 +2,7 @@
     "Servers": [
         {
             "ServerID": "282293407181832195",
-            "Reminders": [
-                {
-                    "UserID": "142756402912428032",
-                    "ChannelID": "766432412955181076",
-                    "ReminderTime": 1623295448,
-                    "Reminder": "test"
-                }
-            ],
+            "Reminders": [],
             "Users": [
                 {
                     "UserID": "142756402912428032",
