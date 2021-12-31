@@ -3,6 +3,7 @@ const fs = require('fs');
 const bridge = require('./bridge.js');
 const frank = require('./frank.js');
 const pain = require('./pain.js');
+const ipa = require('./ipa.js');
 
 module.exports = {
 
@@ -34,6 +35,10 @@ module.exports = {
         else if(text === "https://cdn.discordapp.com/attachments/301853447886471169/782725751216406578/video0.mp4")
         {
             frank.run(message)
+        }
+        else if(text.includes('ipa'))
+        {
+            ipa.run(message);
         }
     
     }
